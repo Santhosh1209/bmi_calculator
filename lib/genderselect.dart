@@ -1,10 +1,13 @@
+// genderselect.dart
 import 'package:flutter/material.dart';
 
-// custom widget to make gender selection easier
+// custom widget
 class GenderSelect extends StatelessWidget {
-  GenderSelect({required this.gender,required this.icon});
-  final String gender;
   final IconData icon;
+  final String gender;
+  final bool selected;
+
+  GenderSelect({required this.icon, required this.gender, this.selected = false});
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +18,11 @@ class GenderSelect extends StatelessWidget {
           icon,
           size: 80.0,
         ),
-        SizedBox(
-          height: 15.0,
-          width: 15.0,
-        ),
+        SizedBox(height: 15.0),
         Text(
           gender,
-          style: TextStyle
-            (
-            fontSize: 20.0,
-          ),)
+          style: TextStyle(fontSize: 18.0, color: selected ? Colors.white : Colors.grey),
+        ),
       ],
     );
   }
