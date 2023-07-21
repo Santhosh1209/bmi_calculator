@@ -22,6 +22,7 @@ class GenderSelect extends StatelessWidget {
         Text(
           gender,
           style: TextStyle(fontSize: 18.0, color: selected ? Colors.white : Colors.grey),
+          // here, 'selected' is a boolean value. if its true, white is selected. Otherwise, grey is selected
         ),
       ],
     );

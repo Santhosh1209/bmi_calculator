@@ -31,7 +31,7 @@ class page extends StatefulWidget {
 
 class _pageState extends State<page> {
   String selectedGender = ''; // Variable to store the selected gender
-
+  double height = 150.0; // used in the slider
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,6 +86,47 @@ class _pageState extends State<page> {
           Expanded(
             child: ReusableCard(
               colour: Color(0xF1D1E33),
+    cardChild: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+    Text(
+    'HEIGHT',
+    style: TextStyle(
+    fontSize: 20.0,
+    ),
+    ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.baseline,
+        textBaseline: TextBaseline.alphabetic,
+        children: [
+          Text(
+            height.toStringAsFixed(0), // Display the height value
+            style: TextStyle(
+              fontSize: 40.0, // Increase the font size
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            'cm', // Display 'cm' next to the height value
+            style: TextStyle(
+              fontSize: 20.0,
+            ),
+          ),
+        ],
+      ),
+      Slider(
+        value: height,
+        min: 100.0,
+        max: 220.0,
+        onChanged: (newValue) {
+          setState(() {
+            height = newValue;
+          });
+        },
+      ),
+    ],
+    ),
             ),
           ),
           Expanded(
