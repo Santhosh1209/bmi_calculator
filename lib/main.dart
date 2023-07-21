@@ -31,7 +31,9 @@ class page extends StatefulWidget {
 
 class _pageState extends State<page> {
   String selectedGender = ''; // Variable to store the selected gender
-  double height = 150.0; // used in the slider
+  double height = 150.0; // used in the slider for height
+  int age = 25;
+  int weight = 60;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,24 +131,102 @@ class _pageState extends State<page> {
     ),
             ),
           ),
-          Expanded(
-          child: Row(
-            children: [
-              Expanded(
-                child: ReusableCard(
-                  colour: Color(0xF1D1E33),
-                )
+            Expanded(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ReusableCard(
+                      colour: Color(0xF1D1E33),
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'WEIGHT',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                            ),
+                          ),
+                          Text(
+                            weight.toString(), // Display the weight value
+                            style: TextStyle(
+                              fontSize: 40.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    weight--; // Decrement weight by 1
+                                  });
+                                },
+                                icon: Icon(Icons.remove),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    weight++; // Increment weight by 1
+                                  });
+                                },
+                                icon: Icon(Icons.add),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: ReusableCard(
+                      colour: Color(0xF1D1E33),
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'AGE',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                            ),
+                          ),
+                          Text(
+                            age.toString(), // Display the age value
+                            style: TextStyle(
+                              fontSize: 40.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    age--; // Decrement age by 1
+                                  });
+                                },
+                                icon: Icon(Icons.remove),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    age++; // Increment age by 1
+                                  });
+                                },
+                                icon: Icon(Icons.add),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Expanded(child:
-              ReusableCard(
-                colour: Color(0xF1D1E33),
-              )
-              ),
-            ],
-          ),
-          ),
-        ],
-      )
+            ),
+          ],
+        ),
     );
   }
 }
