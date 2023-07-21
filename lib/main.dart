@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'genderselect.dart';
@@ -31,9 +32,23 @@ class page extends StatefulWidget {
 
 class _pageState extends State<page> {
   String selectedGender = ''; // Variable to store the selected gender
-  double height = 150.0; // used in the slider for height
+  double height = 160.0; // used in the slider for height
   int age = 25;
   int weight = 60;
+  void calculateBMI() {
+    double heightInMeters = height / 100;
+    double bmi = weight / (heightInMeters * heightInMeters);
+
+    // Navigate to the result page with BMI, category, and tips
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ResultPage(
+          bmiResult: bmi,
+        ),
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -218,17 +233,23 @@ class _pageState extends State<page> {
                               ),
                             ],
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+                              Padding( // Wrap the button with Padding
+                              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+    child: ElevatedButton(
+    onPressed: calculateBMI,
+    child: Text('CALCULATE BMI'),
+    ),
+    ),
+    ],
+    ),
+    ),
+    ),
+    ]
+    ),
+    ),
+    ],
+    ),
     );
   }
 }
-
 
